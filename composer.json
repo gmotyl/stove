@@ -1,0 +1,24 @@
+{
+    "name": "gom3s/stove",
+    "description": "Fuel heating stove manager",
+    "license": "GNU v.3",
+    "authors": [
+        {
+            "name": "Grzegorz Motyl",
+            "email": "gmotyl@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "ramsey/uuid": "^3.7",
+        "esky/enum": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "symfony/var-dumper": "^4.0"
+    }
+}
