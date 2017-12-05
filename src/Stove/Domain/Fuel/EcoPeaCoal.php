@@ -20,6 +20,19 @@ class EcoPeaCoal implements IFuel
     private $energyCapacity;
 
     /**
+     * EcoPeaCoal constructor.
+     *
+     * @param string $name
+     * @param float $energyCapacity
+     */
+    public function __construct($name, $energyCapacity)
+    {
+        $this->type = EFuel::ECO_PEA_COAL();
+        $this->name = $name;
+        $this->energyCapacity = $energyCapacity;
+    }
+
+    /**
      * @return string
      */
     public function getName(): string
