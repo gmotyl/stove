@@ -11,21 +11,15 @@ class EcoCoalStoveTest extends BaseDomainTest
 {
     public function testEcoPeaCoalStoveHasProperFuelType()
     {
-        $stove = new EcoCoalStove();
+        $stove = $this->createStove();
         $type = $stove->getFuelType();
 
         $this->assertInstanceOf(EFuel::class, $type);
         $this->assertEquals(EFuel::ECO_PEA_COAL(), $type);
     }
 
-    public function testEcoPeaCoalStoveHasName()
+    private function createStove()
     {
-        $stove = new EcoCoalStove();
-        $type = $stove->getFuelType();
-
-        $this->assertInstanceOf(EFuel::class, $type);
-        $this->assertEquals(EFuel::ECO_PEA_COAL(), $type);
+        return new EcoCoalStove();
     }
-
-
 }
