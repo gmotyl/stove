@@ -17,6 +17,13 @@ class EcoPeaCoalTest extends BaseDomainTest
         $this->assertEquals(EFuel::ECO_PEA_COAL(), $type);
     }
 
+    public function testFuelHasEnergyCapacity()
+    {
+        $fuel = $this->createEcoPeaCoalFuel('Czarna Perła', 22);
+
+        $this->assertEquals(22, $fuel->getEnergyCapacity());
+    }
+
     private function createEcoPeaCoalFuel($name, $energyCapacity)
     {
         return new EcoPeaCoal($name, $energyCapacity);
