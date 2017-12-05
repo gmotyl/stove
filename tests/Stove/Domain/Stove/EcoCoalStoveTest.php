@@ -20,6 +20,8 @@ class EcoCoalStoveTest extends BaseDomainTest
 
     private function createStove()
     {
-        return new EcoCoalStove();
+        $hooper = $this->getEcoPeaHooperMock();
+
+        return new EcoCoalStove($hooper);
     }
 }

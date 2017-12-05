@@ -13,21 +13,32 @@ class EcoCoalStove implements IStove
     private $fuelType;
 
     /**
+     * @var EStoveStatus
+     */
+    private $status;
+
+    /**
+     * @var EcoCoalHooper
+     */
+    private $hooper;
+    /**
      * EcoCoalStove constructor.
      */
-    public function __construct()
+    public function __construct(EcoCoalHooper $hooper, EStoveStatus $status = null)
     {
+        $this->status = $status ?: EStoveStatus::OFF();
         $this->fuelType = EFuel::ECO_PEA_COAL();
+        $this->hooper = $hooper;
     }
 
     public function lit(\DateTime $date = null)
     {
-        // TODO: Implement lit() method.
+        $this->status = EStoveStatus::ON();
     }
 
     public function putOut(string $reason, \DateTime $date = null)
     {
-        // TODO: Implement putOut() method.
+        $this->status = EStoveStatus::OFF();
     }
 
     public function burn(\DateTime $date = null)
