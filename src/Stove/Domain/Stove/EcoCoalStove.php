@@ -41,9 +41,9 @@ class EcoCoalStove implements IStove
         $this->status = EStoveStatus::OFF();
     }
 
-    public function burn(\DateTime $date = null)
+    public function burn(int $amount, \DateTime $date = null)
     {
-        // TODO: Implement burn() method.
+        $this->hooper->removeFuel($amount);
     }
 
     public function clean(\DateTime $date = null)
