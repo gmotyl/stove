@@ -2,12 +2,13 @@
 
 namespace Stove\Domain\Stove;
 
+use Stove\Domain\Fuel\EcoPeaCoal;
 use Stove\Domain\Fuel\Exception\IncorrectFuelTypeException;
 use Stove\Domain\Stove\Exception\IncorrectAmountExeption;
 use Stove\Domain\Fuel\Basket;
 use Stove\Domain\Fuel\EFuel;
 
-class EcoCoalHooper implements IHopper
+class EcoCoalHooper
 {
     /**
      * @var integer
@@ -46,15 +47,16 @@ class EcoCoalHooper implements IHopper
     }
 
     /**
-     * @param EFuel $type
+     * @param EcoPeaCoal $fuel
      * @param int $amount
      *
      * @throws IncorrectFuelTypeException
+     * @internal param EFuel $type
      */
-    public function addFuel(EFuel $type, int $amount)
+    public function addFuel(EcoPeaCoal $fuel, int $amount): void
     {
-        if ($this->fuelType->getValue() !== $type->getValue()) {
-            throw new IncorrectFuelTypeException('Cant add fuel of type: ' . $type->getName());
+        if ($this->fuelType->getValue() !== $fuel->getType()->getValue()) {
+            throw new IncorrectFuelTypeException('Cant add fuel of type: ' . $fuel->getType()->getName());
         }
 
         $this->amount += $amount;
@@ -82,7 +84,7 @@ class EcoCoalHooper implements IHopper
     public function addBaskets(Basket $basket, int $count)
     {
         for ($i=0; $i < $count; $i++){
-            $this->addFuel($basket->getFuelType(), $basket->getAmount());
+            $this->addFuel($basket->getFuel(), $basket->getAmount());
         }
     }
 

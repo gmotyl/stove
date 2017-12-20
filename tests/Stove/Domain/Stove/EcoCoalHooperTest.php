@@ -19,7 +19,7 @@ class EcoCoalHooperTest extends BaseDomainTest
     }
 
     /**
-     * @expectedException \Stove\Domain\Fuel\Exception\IncorrectFuelTypeException
+     * @expectedException \TypeError
      */
     public function testEcoPeaCoalHooperDontAcceptFuelOfWrongType()
     {
@@ -34,7 +34,7 @@ class EcoCoalHooperTest extends BaseDomainTest
 
         $this->assertEquals(0, $hooper->getAmount());
 
-        $hooper->addFuel(EFuel::ECO_PEA_COAL(), 100);
+        $hooper->addFuel($this->getEcoPeaCoalMock(), 100);
 
         $this->assertEquals(100, $hooper->getAmount());
     }
@@ -72,7 +72,7 @@ class EcoCoalHooperTest extends BaseDomainTest
         $basket = $this->prophesize(Basket::class);
 
         $basket->getAmount()->willReturn(100);
-        $basket->getFuelType()->willReturn(EFuel::ECO_PEA_COAL());
+        $basket->getFuel()->willReturn($this->getEcoPeaCoalMock());
         $basket = $basket->reveal();
 
         $this->assertEquals(0, $hooper->getAmount());
@@ -87,7 +87,6 @@ class EcoCoalHooperTest extends BaseDomainTest
      */
     private function createHooper($amount = 0): EcoCoalHooper
     {
-        $hooper = new EcoCoalHooper($amount);
-        return $hooper;
+        return new EcoCoalHooper($amount);;
     }
 }

@@ -2,12 +2,14 @@
 
 namespace Stove\Domain\Fuel;
 
+use Stove\Domain\IFuel;
+
 class Basket
 {
     /**
      * @var EFuel
      */
-    private $fuelType;
+    private $fuel;
     /**
      * @var integer
      */
@@ -16,12 +18,14 @@ class Basket
     /**
      * Basket constructor.
      *
-     * @param EFuel $fuelType
+     * @param IFuel $fuel
      * @param int $amount
+     *
+     * @internal param EFuel $fuelType
      */
-    public function __construct(EFuel $fuelType, $amount)
+    public function __construct(IFuel $fuel, $amount)
     {
-        $this->fuelType = $fuelType;
+        $this->fuel = $fuel;
         $this->amount = $amount;
     }
 
@@ -30,7 +34,7 @@ class Basket
      */
     public function getFuelType(): EFuel
     {
-        return $this->fuelType;
+        return $this->fuel->getType();
     }
 
     /**
@@ -41,4 +45,11 @@ class Basket
         return $this->amount;
     }
 
+    /**
+     * @return EFuel
+     */
+    public function getFuel(): IFuel
+    {
+        return $this->fuel;
+    }
 }
