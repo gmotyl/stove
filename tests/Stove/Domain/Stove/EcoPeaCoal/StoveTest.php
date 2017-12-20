@@ -1,15 +1,13 @@
 <?php
 
-namespace Tests\Stove\Domain\Stove;
+namespace Tests\Stove\Domain\Stove\EcoPeaCoal;
 
-
-use Stove\Domain\Fuel\EcoPeaCoal;
 use Stove\Domain\Fuel\EFuel;
 use Stove\Domain\Stove\EcoPeaCoal\Hooper;
 use Stove\Domain\Stove\EcoPeaCoal\Stove;
 use Tests\Stove\Domain\BaseDomainTest;
 
-class EcoCoalStoveTest extends BaseDomainTest
+class StoveTest extends BaseDomainTest
 {
     public function testEcoPeaCoalStoveHasProperFuelType()
     {
