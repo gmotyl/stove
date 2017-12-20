@@ -5,8 +5,8 @@ namespace Tests\Stove\Domain\Stove;
 
 use Stove\Domain\Fuel\EcoPeaCoal;
 use Stove\Domain\Fuel\EFuel;
-use Stove\Domain\Stove\EcoCoalHooper;
-use Stove\Domain\Stove\EcoCoalStove;
+use Stove\Domain\Stove\EcoPeaCoal\Hooper;
+use Stove\Domain\Stove\EcoPeaCoal\Stove;
 use Tests\Stove\Domain\BaseDomainTest;
 
 class EcoCoalStoveTest extends BaseDomainTest
@@ -22,11 +22,11 @@ class EcoCoalStoveTest extends BaseDomainTest
 
     public function testStoveCanBurnFuelFromHooper()
     {
-        $hooper = $this->prophesize(EcoCoalHooper::class);
+        $hooper = $this->prophesize(Hooper::class);
         $hooper->removeFuel(200)
             ->shouldBeCalled();
 
-        $stove = new EcoCoalStove($hooper->reveal());
+        $stove = new Stove($hooper->reveal());
         $stove->burn(200);
     }
 
@@ -34,6 +34,6 @@ class EcoCoalStoveTest extends BaseDomainTest
     {
         $hooper = $this->getEcoPeaHooperMock();
 
-        return new EcoCoalStove($hooper);
+        return new Stove($hooper);
     }
 }

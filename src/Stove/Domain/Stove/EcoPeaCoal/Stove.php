@@ -1,11 +1,12 @@
 <?php
 
-namespace Stove\Domain\Stove;
+namespace Stove\Domain\Stove\EcoPeaCoal;
 
 use Stove\Domain\Fuel\EFuel;
 use Stove\Domain\IStove;
+use Stove\Domain\Stove\EStoveStatus;
 
-class EcoCoalStove implements IStove
+class Stove implements IStove
 {
     /**
      * @var EFuel
@@ -18,13 +19,13 @@ class EcoCoalStove implements IStove
     private $status;
 
     /**
-     * @var EcoCoalHooper
+     * @var Hooper
      */
     private $hooper;
     /**
      * EcoCoalStove constructor.
      */
-    public function __construct(EcoCoalHooper $hooper, EStoveStatus $status = null)
+    public function __construct(Hooper $hooper, EStoveStatus $status = null)
     {
         $this->status = $status ?: EStoveStatus::OFF();
         $this->fuelType = EFuel::ECO_PEA_COAL();

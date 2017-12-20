@@ -6,6 +6,6 @@ use Esky\Enum\Enum;
 
 class EStoveStatus extends Enum
 {
-    const OFF = 0;
-    const ON = 1;
+    public const OFF = 0;
+    public const ON = 1;
 }

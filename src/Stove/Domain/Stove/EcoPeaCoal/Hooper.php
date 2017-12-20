@@ -1,6 +1,6 @@
 <?php
 
-namespace Stove\Domain\Stove;
+namespace Stove\Domain\Stove\EcoPeaCoal;
 
 use Stove\Domain\Fuel\EcoPeaCoal;
 use Stove\Domain\Fuel\Exception\IncorrectFuelTypeException;
@@ -8,7 +8,7 @@ use Stove\Domain\Stove\Exception\IncorrectAmountExeption;
 use Stove\Domain\Fuel\Basket;
 use Stove\Domain\Fuel\EFuel;
 
-class EcoCoalHooper
+class Hooper
 {
     /**
      * @var integer

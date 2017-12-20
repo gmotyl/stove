@@ -5,7 +5,7 @@ namespace Tests\Stove\Domain;
 use PHPUnit\Framework\TestCase;
 use Stove\Domain\Fuel\EcoPeaCoal;
 use Stove\Domain\Fuel\EFuel;
-use Stove\Domain\Stove\EcoCoalHooper;
+use Stove\Domain\Stove\EcoPeaCoal\Hooper as EcoCoalHooper;
 
 abstract class BaseDomainTest extends TestCase
 {

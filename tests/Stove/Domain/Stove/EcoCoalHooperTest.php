@@ -4,7 +4,7 @@ namespace Tests\Hooper\Domain\Hooper;
 
 use Stove\Domain\Fuel\Basket;
 use Stove\Domain\Fuel\EFuel;
-use Stove\Domain\Stove\EcoCoalHooper;
+use Stove\Domain\Stove\EcoPeaCoal\Hooper;
 use Tests\Stove\Domain\BaseDomainTest;
 
 class EcoCoalHooperTest extends BaseDomainTest
@@ -83,10 +83,10 @@ class EcoCoalHooperTest extends BaseDomainTest
     /**
      * @param int $amount
      *
-     * @return EcoCoalHooper
+     * @return Hooper
      */
-    private function createHooper($amount = 0): EcoCoalHooper
+    private function createHooper($amount = 0): Hooper
     {
-        return new EcoCoalHooper($amount);;
+        return new Hooper($amount);;
     }
 }
