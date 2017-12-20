@@ -14,6 +14,11 @@
         }
     },
     "require": {
+        "prooph/event-store": "^7.2",
+        "prooph/event-sourcing": "^5.2",
+        "prooph/pdo-event-store": "^1.5",
+        "prooph/service-bus": "^6.1",
+        "prooph/event-store-bus-bridge": "^3.0",
         "ramsey/uuid": "^3.7",
         "esky/enum": "^1.1",
         "moontoast/math": "^1.1"
