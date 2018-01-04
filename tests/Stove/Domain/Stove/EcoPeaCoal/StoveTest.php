@@ -2,6 +2,7 @@
 
 namespace Tests\Stove\Domain\Stove\EcoPeaCoal;
 
+use Ramsey\Uuid\Uuid;
 use Stove\Domain\Fuel\EFuel;
 use Stove\Domain\Stove\EcoPeaCoal\Hooper;
 use Stove\Domain\Stove\EcoPeaCoal\Stove;
@@ -24,7 +25,7 @@ class StoveTest extends BaseDomainTest
         $hooper->removeFuel(200)
             ->shouldBeCalled();
 
-        $stove = new Stove($hooper->reveal());
+        $stove = new Stove(Uuid::fromInteger(1), $hooper->reveal());
         $stove->burn(200);
     }
 
@@ -32,6 +33,6 @@ class StoveTest extends BaseDomainTest
     {
         $hooper = $this->getEcoPeaHooperMock();
 
-        return new Stove($hooper);
+        return new Stove(Uuid::fromInteger(1), $hooper);
     }
 }

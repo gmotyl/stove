@@ -2,12 +2,22 @@
 
 namespace Stove\Domain\Stove\EcoPeaCoal;
 
+use Payments\Domain\Events\StoveWasLit;
+use Prooph\EventSourcing\AggregateChanged;
+use Prooph\EventSourcing\AggregateRoot;
+use Ramsey\Uuid\UuidInterface;
 use Stove\Domain\Fuel\EFuel;
 use Stove\Domain\IStove;
 use Stove\Domain\Stove\EStoveStatus;
 
-class Stove implements IStove
+class Stove extends AggregateRoot implements IStove
 {
+
+    /**
+     * @var UuidInterface
+     */
+    private $id;
+
     /**
      * @var EFuel
      */
@@ -25,11 +35,14 @@ class Stove implements IStove
     /**
      * EcoCoalStove constructor.
      */
-    public function __construct(Hooper $hooper, EStoveStatus $status = null)
+    public function __construct(UuidInterface $id, Hooper $hooper, EStoveStatus $status = null)
     {
+        $this->id = $id;
         $this->status = $status ?: EStoveStatus::OFF();
         $this->fuelType = EFuel::ECO_PEA_COAL();
         $this->hooper = $hooper;
+
+        parent::__construct();
     }
 
     public function lit(\DateTime $date = null)
@@ -58,4 +71,19 @@ class Stove implements IStove
     }
 
 
+    protected function aggregateId(): string
+    {
+        return (string)$this->id;
+    }
+
+    protected function apply(AggregateChanged $event): void
+    {
+        switch (get_class($event)) {
+            case StoveWasLit::class:
+                $this->lit($event->createdAt());
+
+                break;
+
+        }
+    }
 }
